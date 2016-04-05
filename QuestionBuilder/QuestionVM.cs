@@ -16,12 +16,14 @@ namespace QuestionBuilder
         private UserControl _questionAnswerControl;
         private UserControl _questionControl;
         private QuestionEditWindow _questionWindow;
+        private AppController _appController;
 
-        public QuestionVM(QuestionEditWindow questionWindow)
+        public QuestionVM(AppController appController)
         {
             _question = new Question();
             _question.CorrectAnswerPlaces = new List<int>();
             _qService = new QuestionService();
+            _appController = appController;
         }
 
         public void SetQuestionControl(int type)
@@ -100,7 +102,7 @@ namespace QuestionBuilder
 
         private void ChangeToMain()
         {
-            questionWindow.Hide();
+            _questionWindow.Hide();
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
         }
@@ -116,7 +118,7 @@ namespace QuestionBuilder
                 SetCorrectAnswerPlaces();
                 _question = _qService._question;
 
-                _qService.SaveQuestion(_question, string.Format("Question-{0}{1}{2}{3}.xml",DateTime.Now.Month.ToString(), DateTime.Now.Day.ToString(), DateTime.Now.Minute.ToString(), DateTime.Now.Second.ToString()));
+                _qService.SaveQuestion(_question, string.Format("{0}\\Question-{1}{2}{3}{4}.xml",_appController.QuestionDirectory,DateTime.Now.Month.ToString(), DateTime.Now.Day.ToString(), DateTime.Now.Minute.ToString(), DateTime.Now.Second.ToString()));
             }
         }
     }

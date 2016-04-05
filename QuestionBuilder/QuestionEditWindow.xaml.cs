@@ -10,12 +10,12 @@ namespace QuestionBuilder
     {
         private MainWindow mainWindow;
         private QuestionVM _qVM;
-        private AppController _appController;
+        public AppController AppController { get; set; }
 
         public QuestionEditWindow(MainWindow mainWindow, QuestionVM qVM, AppController appController)
         {
             _qVM = qVM;
-            _appController = appController;
+            AppController = appController;
             
             this.mainWindow = mainWindow;
             InitializeComponent();

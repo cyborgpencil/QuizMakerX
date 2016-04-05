@@ -12,8 +12,10 @@ namespace QuestionBuilder
 
         public MainWindow()
         {
-            _questVM = new QuestionVM();
             _appController = new AppController();
+            _questVM = new QuestionVM(_appController);
+
+            _appController.CreateQuestionFolder();
             InitializeComponent();
         }
 
