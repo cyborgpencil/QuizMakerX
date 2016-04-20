@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace QuestionBuilder
 {
@@ -8,26 +10,29 @@ namespace QuestionBuilder
     public partial class MainWindow : Window
     {
         private QuestionVM _questVM;
-        private AppController _appController;
+        public AppController AppController { get; set; }
 
         public MainWindow()
         {
-            _appController = new AppController();
-            _questVM = new QuestionVM(_appController);
-
-            _appController.CreateQuestionFolder();
+            AppController = new AppController();
+            _questVM = new QuestionVM(AppController);
             InitializeComponent();
         }
 
         private void next_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (_appController.CheckSlectedList(type_comboBox.SelectedIndex))
+            if (AppController.CheckSlectedList(type_comboBox.SelectedIndex))
             {
                 _questVM.SetQuestionControl(type_comboBox.SelectedIndex);
                 this.Hide();
-                QuestionEditWindow questEditWindow = new QuestionEditWindow(this, _questVM, _appController);
+                QuestionEditWindow questEditWindow = new QuestionEditWindow(this, _questVM, AppController);
                 questEditWindow.Show();
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            AppController.GetFileNames(this);
         }
     }
 }

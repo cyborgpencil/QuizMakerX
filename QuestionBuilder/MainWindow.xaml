@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:QuestionBuilder"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="QuestionBuilder.MainWindow"
         mc:Ignorable="d"
-        Title="QuestionBuilder" Height="512" Width="512" MinHeight="512" MinWidth="512" Background="#FF96CFBA">
+        Title="QuestionBuilder" Height="512" Width="512" MinHeight="512" MinWidth="512" Background="#FF96CFBA" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="65*"/>
@@ -29,7 +29,8 @@
         <TextBlock Margin="2" TextWrapping="Wrap" Grid.Row="1" Grid.ColumnSpan="2"><Run Text="Click Next to finsh Question or Edit another question"/></TextBlock>
         <Button x:Name="next_btn" Content="Next" Margin="10" Click="next_btn_Click" Grid.Row="1" Grid.Column="2" />
 
-        <ListBox x:Name="listBox"  Margin="10" Grid.Row="4" Grid.ColumnSpan="3">
+        <ListBox x:Name="questionlistBox" ItemsSource="{Binding Path=_appController.ListQuestionsOnFileList}" Margin="10" Grid.Row="4" Grid.ColumnSpan="3">
+            <ListBoxItem />
         </ListBox>
         <Button x:Name="Edit" Content="Edit" Margin="20" Grid.Row="2" Grid.Column="0"/>
         <TextBlock Margin="2" TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" Text="Edit an existing question by slecting it them press the edit button"></TextBlock>

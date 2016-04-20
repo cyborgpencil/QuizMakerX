@@ -1,9 +1,6 @@
 ﻿using QuizBuilderLib;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -118,7 +115,7 @@ namespace QuestionBuilder
                 SetCorrectAnswerPlaces();
                 _question = _qService._question;
 
-                _qService.SaveQuestion(_question, string.Format("{0}\\Question-{1}{2}{3}{4}.xml",_appController.QuestionDirectory,DateTime.Now.Month.ToString(), DateTime.Now.Day.ToString(), DateTime.Now.Minute.ToString(), DateTime.Now.Second.ToString()));
+                _qService.SaveQuestion(_question, string.Format("{0}\\Question-{1}{2}{3}{4}.xml",_appController.quizFileUtil.QuestionAppDirectory,DateTime.Now.Month.ToString(), DateTime.Now.Day.ToString(), DateTime.Now.Minute.ToString(), DateTime.Now.Second.ToString()));
             }
         }
     }
