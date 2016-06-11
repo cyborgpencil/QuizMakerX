@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuestionBuilder.View
+namespace QuestionBuilder.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MultiCoice4.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class QuestionMultiChoice4 : UserControl
     {
-        public MainWindow()
+        public QuestionMultiChoice4()
         {
             InitializeComponent();
         }

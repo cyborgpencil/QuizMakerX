@@ -8,7 +8,6 @@ namespace QuizBuilderLib
 {
     public class QuestionService
     {
-        private UserControl _mainQuestion;
         public Question _question;
 
         public QuestionService()
